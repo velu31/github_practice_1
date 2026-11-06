@@ -1,0 +1,17 @@
+name: hello_world
+
+on: workflow_dispatch
+
+jobs:
+  say_hello:
+    run-on: ubuntu-latest
+    steps:
+      - name: print a geeting
+        run: echo "hello github action"
+      - name: print a message 
+        run: |
+          echo "this step runs several shell commands"  
+          echo "today is runn"
+          echo "this running stage"
+
+        
