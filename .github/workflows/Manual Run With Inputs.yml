@@ -1,38 +1,38 @@
-name: manul triggter
+name: Manual Trigger
 
-on: 
+on:
   workflow_dispatch:
     inputs:
       environment:
-        description: 'target envinroment'
+        description: 'Target environment'
         required: true
-        default: 'staring'
+        default: 'testing'
         type: choice
         options:
           - production
           - testing
           - prodod
           - release
-     version:
-       description: 'Version to deploy (e.g. 1.4.0)'
-       required: false
-       default: 'latest'
-       type: string
-     dry_run:
-       description: 'Only simulate, do not actually deploy'
-       required: false
-       default: true
-       type: boolean
-jobs: 
+
+      version:
+        description: 'Version to deploy (e.g. 1.4.0)'
+        required: false
+        default: 'latest'
+        type: string
+
+      dry_run:
+        description: 'Only simulate, do not actually deploy'
+        required: false
+        default: true
+        type: boolean
+
+jobs:
   manual-job:
     runs-on: ubuntu-latest
+
     steps:
       - name: Show the inputs the user selected
         run: |
           echo "Environment : ${{ inputs.environment }}"
           echo "Version     : ${{ inputs.version }}"
           echo "Dry run?    : ${{ inputs.dry_run }}"
-    
-
-       
-      
