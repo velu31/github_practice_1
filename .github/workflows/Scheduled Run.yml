@@ -1,0 +1,13 @@
+name: Scheduled rub
+
+
+on: 
+  schedule:
+    - cron: '5 13 * * *'
+
+jobs:
+  scheduled-task:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Scheduled housekeeping
+        run: echo "Running scheduled job at $(date -u)"
