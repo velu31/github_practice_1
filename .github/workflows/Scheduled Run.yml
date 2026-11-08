@@ -3,7 +3,7 @@ name: Scheduled rub
 
 on: 
   schedule:
-    - cron: '15 13 * * *'
+    - cron: '35 17 * * *'
 
 jobs:
   scheduled-task:
