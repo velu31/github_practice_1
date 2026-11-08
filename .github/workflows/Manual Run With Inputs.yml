@@ -23,8 +23,8 @@ on:
       dry_run:
         description: 'Only simulate, do not actually deploy'
         required: false
-        default: true
-        type: boolean
+        default: 'true'
+        type: string
 
 jobs:
   manual-job:
