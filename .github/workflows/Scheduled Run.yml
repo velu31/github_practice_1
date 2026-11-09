@@ -2,8 +2,9 @@ name: Scheduled rub
 
 
 on: 
+  workflow_dispatch:
   schedule:
-    - cron: '30 9 * * *'
+    - cron: '35 9 * * *'
 
 jobs:
   scheduled-task:
