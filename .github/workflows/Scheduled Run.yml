@@ -4,7 +4,7 @@ name: Scheduled rub
 on: 
   workflow_dispatch:
   schedule:
-    - cron: '35 9 * * *'
+    - cron: '5 * * * *'
 
 jobs:
   scheduled-task:
