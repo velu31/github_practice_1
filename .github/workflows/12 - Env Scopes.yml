@@ -25,5 +25,5 @@ jobs:
           echo "STAGE    = $STAGE"      # step-level     
 
       - name: Read env inside an expression
-        if: ${{ env.STAGE == 'DemoApp' }}
+        if: ${{ env.STAGE == 'global-level' }}
         run: echo "Expression saw APP_NAME = ${{ env.APP_NAME }}"
