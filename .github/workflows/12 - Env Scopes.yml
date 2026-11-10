@@ -24,6 +24,6 @@ jobs:
           echo "APP_NAME = $APP_NAME"   # DemoApp     
           echo "STAGE    = $STAGE"      # step-level     
 
-      - name: Read env inside an expression
-        if: ${{ env.STAGE == 'step-level' }}
+      - name: Read env inside an expression 
+        if: ${{ env.STAGE == 'job-level' }}
         run: echo "Expression saw APP_NAME = ${{ env.APP_NAME }}"
