@@ -44,3 +44,12 @@ jobs:
       - name: String helper functions
         if: startsWith(github.ref, 'refs/heads/') && !contains(github.ref_name, 'wip')
         run: echo "Running on a branch that is not marked wip."
+
+      - name: stop the step
+        run: exit 1
+
+      - name: checking the status
+        if: env.DEPLOY_TARGET == 'staging'
+        run: echo "Deploying to staging."
+
+        
