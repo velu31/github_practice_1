@@ -16,3 +16,6 @@ jobs:
           echo "version=$VERSION"            >> "$GITHUB_OUTPUT"
           echo "timestamp=$(date -u +%FT%TZ)" >> "$GITHUB_OUTPUT"
           echo "Computed version $VERSION"
+      - name: Accessing from another step
+        run: |
+          echo "${{ steps.meta.outputs.version }}"
