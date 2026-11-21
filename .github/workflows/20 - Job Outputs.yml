@@ -19,3 +19,4 @@ jobs:
       - name: Accessing from another step
         run: |
           echo "${{ steps.meta.outputs.version }}"
+          echo "${{ steps.meta.outputs.timestamp }}"
