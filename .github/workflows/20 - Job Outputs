@@ -1,0 +1,23 @@
+name: 20 - Job Outputs
+
+on: workflow_dispatch
+
+jobs:
+  produce:
+    runs-on: ubuntu-latest
+
+    # STEP 2 of the chain: promote step outputs to JOB outputs.
+    outputs:
+      version:   ${{ steps.meta.outputs.version }}
+      timestamp: ${{ steps.meta.outputs.timestamp }}
+      changelog: ${{ steps.notes.outputs.changelog }}
+
+    steps:
+      # STEP 1 of the chain: write to the special $GITHUB_OUTPUT file.
+      - name: Compute some metadata
+        id: meta                       # <- the id is mandatory
+        run: |
+          VERSION="1.4.${{ github.run_number }}"
+          echo "version=$VERSION"            >> "$GITHUB_OUTPUT"
+          echo "timestamp=$(date -u +%FT%TZ)" >> "$GITHUB_OUTPUT"
+          echo "Computed version $VERSION"
