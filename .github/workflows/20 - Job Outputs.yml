@@ -1,10 +1,4 @@
-name: 20 - Job Outputs
-
-on: workflow_dispatch
-
-jobs:
-  produce:
-    runs-on: ubuntu-latest# 20 - Passing DATA between steps and between jobs
+# 20 - Passing DATA between steps and between jobs
 # Remember from file 16: every job is a different machine. A variable you
 # `export` in job A simply does not exist in job B. To move a small VALUE
 # (a version number, an image tag, a URL) you use OUTPUTS.
@@ -94,19 +88,3 @@ jobs:
       - name: Gate on an output value
         if: needs.produce.outputs.version != ''
         run: echo "We have a version, so a deploy could proceed."
-
-
-
-    steps:
-      # STEP 1 of the chain: write to the special $GITHUB_OUTPUT file.
-      - name: Compute some metadata
-        id: meta                       # <- the id is mandatory
-        run: |
-          VERSION="1.4.${{ github.run_number }}"
-          echo "version=$VERSION"            >> "$GITHUB_OUTPUT"
-          echo "timestamp=$(date -u +%FT%TZ)" >> "$GITHUB_OUTPUT"
-          echo "Computed version $VERSION"
-      - name: Accessing from another step
-        run: |
-          echo "${{ steps.meta.outputs.version }}"
-          echo "${{ steps.meta.outputs.timestamp }}"
